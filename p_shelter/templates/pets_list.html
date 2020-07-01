@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h2>Наши питомцы</h2>
+    <ul class="nav nav-tabs">
+		<li class="nav-item">
+		  <a class="nav-link active" data-toggle="tab" href="#dogs">Собаки</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" data-toggle="tab" href="#cats">Кошки</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" data-toggle="tab" href="#parrots">Попугаи</a>
+		</li>
+	  </ul>
+	<div class="tab-content">
+		<!-- Первый блок собак (он отображается по умолчанию, т.к. имеет классы show и active) -->  
+		<div class="tab-pane fade show active" id="dogs">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+				<tr>
+					<th>Кличка</td>
+					<th>Порода</td>
+					<th>Описание</td>
+					<th>Дата поступления</th>
+					<th>Фото</th>
+				</tr>
+				</thead>
+				{% for pet in pets_dog %}
+				<tr>
+					<td>{{ pet.name }}</td>
+					<td>{{ pet.breed }}</td>
+					<td>{{ pet.description }}</td>
+					<td>{{pet.data}}</td>
+					{% if pet.photo %}
+					   <td><img src="{{ pet.photo.url }}"  width="102px" height="102px"></td>
+					{% else %}
+					   <td>Фото отстутсвует</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+		<!-- Второй блок кошек-->  
+		<div class="tab-pane fade " id="cats">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+				<tr>
+					<th>Кличка</td>
+					<th>Порода</td>
+					<th>Описание</td>
+					<th>Дата поступления</th>
+					<th>Фото</th>
+				</tr>
+				</thead>
+				{% for pet in pets_cat %}
+				<tr>
+					<td>{{ pet.name }}</td>
+					<td>{{ pet.breed }}</td>
+					<td>{{ pet.description }}</td>
+					<td>{{pet.data}}</td>
+					{% if pet.photo %}
+					   <td><img src="{{ pet.photo.url }}"  width="102px" height="102px"></td>
+					{% else %}
+					   <td>Фото отстутсвует</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+		<!-- Третий блок попугаев-->  
+		<div class="tab-pane fade" id="parrots">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+				<tr>
+					<th>Кличка</th>
+					<th>Порода</th>
+					<th>Описание</th>
+					<th>Дата поступления</th>
+					<th>Фото</th>
+				</tr>
+				</thead>
+				{% for pet in pets_parrot %}
+				<tr>
+					<td>{{ pet.name }}</td>
+					<td>{{ pet.breed }}</td>
+					<td>{{ pet.description }}</td>
+					<td>{{pet.data}}</td>
+					{% if pet.photo %}
+					   <td><img src="{{ pet.photo.url }}"  width="102px" height="102px"></td>
+					{% else %}
+					   <td>Фото отстутсвует</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	  </div>  
+	
+{% endblock %}
+
+
